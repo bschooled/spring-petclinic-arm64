@@ -21,7 +21,7 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.GenericContainer;
 
 /**
  * PetClinic Spring Boot Application.
@@ -35,8 +35,8 @@ public class MysqlTestApplication {
 	@ServiceConnection
 	@Profile("mysql")
 	@Bean
-	static MySQLContainer<?> container() {
-		return new MySQLContainer<>("mysql:5.7");
+	static GenericContainer<?> container() {
+		return new GenericContainer<>("mysql:8.0.33");
 	}
 
 	public static void main(String[] args) {

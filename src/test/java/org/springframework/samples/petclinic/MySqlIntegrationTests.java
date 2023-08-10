@@ -31,7 +31,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.samples.petclinic.vet.VetRepository;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
@@ -42,7 +42,7 @@ class MySqlIntegrationTests {
 
 	@ServiceConnection
 	@Container
-	static MySQLContainer<?> container = new MySQLContainer<>("mysql:5.7");
+	static GenericContainer<?> container = new GenericContainer<>("mysql:8.0.33").withExposedPorts(3306);
 
 	@LocalServerPort
 	int port;
